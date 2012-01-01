@@ -4,7 +4,7 @@
   %span.description Ex: a simple text
 .group
   = f.label :content, t("activerecord.attributes.blog_entry.content", :default => "Content"), :class => :label
-  = f.text_area :content, :class => 'text_area'
+  = f.cktext_area :content, :input_html => {:toolbar => 'Full'}
   %span.description Ex: a simple text
 .group
   = f.label :publish_at, t("activerecord.attributes.blog_entry.publish_at", :default => "Publish at"), :class => :label

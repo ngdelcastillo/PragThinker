@@ -11,6 +11,7 @@ gem 'devise'
 gem 'kaminari'
 gem 'execjs'
 gem 'ckeditor'
+gem 'paperclip'
 
 # Gems for production
 group :development, :test do

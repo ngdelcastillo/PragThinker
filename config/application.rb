@@ -56,5 +56,8 @@ module PragThinker
       Devise::SessionsController.layout "sign"
       Devise::RegistrationsController.layout "sign"
     end
+
+    # Configure CKEditor
+    config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
   end
 end
