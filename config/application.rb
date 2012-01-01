@@ -50,5 +50,11 @@ module PragThinker
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # For Devise
+    config.to_prepare do
+      Devise::SessionsController.layout "sign"
+      Devise::RegistrationsController.layout "sign"
+    end
   end
 end
