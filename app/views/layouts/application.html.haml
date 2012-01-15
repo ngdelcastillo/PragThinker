@@ -2,6 +2,7 @@
 %html
   %head
     %title PragThinker
+    %link{:href => "http://fonts.googleapis.com/css?family=Aldrich&subset=latin", :rel => "stylesheet", :type => "text/css"}
     = stylesheet_link_tag 'web_app_theme'
     = javascript_include_tag 'application'
     = javascript_include_tag 'ckeditor/ckeditor'   
@@ -19,7 +20,7 @@
             %li{:class => (params[:controller] == "home" ? "first active" : "first")}
               = link_to "Home", root_path
             %li{:class => (params[:controller] == "blog_entries" ? "active" : nil)}              
-              = link_to "Blog Entries", blog_entries_path
+              = link_to "Blog", blog_entries_path
             %li
               %a{:href => "#"}= t("web-app-theme.profile", :default => "Profile")
             %li
@@ -34,6 +35,6 @@
           #footer
             .block
               %p
-                Copyright &copy; #{Time.now.year} PragThinker.
+                Copyright &copy; #{Time.now.year} Noel E. del Castillo.
         #sidebar
           = yield :sidebar

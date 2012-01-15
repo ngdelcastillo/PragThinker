@@ -1,34 +1,27 @@
+- if user_signed_in?
+  .admin_menu
+    = link_to image_tag("web-app-theme/icons/application_edit.png", :alt => "#{t("web-app-theme.new", :default=> "Create")}") + " " + t("web-app-theme.new", :default => "Create"), new_blog_entry_path, :class => "button" 
 .block
-  .secondary-navigation
-    %ul.wat-cf
-      %li.first.active= link_to "#{t("web-app-theme.list", :default => "List")}", blog_entries_path
-      %li= link_to "#{t("web-app-theme.new", :default => "New")}", new_blog_entry_path
-  .content
-    %h2.title
-      = t("web-app-theme.all", :default => "All")
-      Blog Entries
-    .inner
-      %table.table
-        %tr
-          %th.first ID
-          %th
-            = t("activerecord.attributes.blog_entry.subject", :default => t("activerecord.labels.subject", :default => "Subject"))
-          %th= t("web-app-theme.created_at", :default => "Created at")
-          %th.last &nbsp;
-        - @blog_entries.each do |blog_entry|
-          %tr{:class => cycle("odd", "even")}
-            %td
-              = blog_entry.id
-            %td
-              = link_to blog_entry.subject, blog_entry_path(blog_entry)
-            %td
-              = blog_entry.created_at
-            %td.last
-              = link_to "#{t("web-app-theme.show", :default => "Show")}", blog_entry_path(blog_entry)
-              |
-              \#{link_to "#{t("web-app-theme.edit", :default => "Edit")}", edit_blog_entry_path(blog_entry)} |
-              \#{link_to "#{t("web-app-theme.delete", :default => "Delete")}", blog_entry_path(blog_entry), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}"}
-      .actions-bar.wat-cf
-        .actions
-        = paginate @blog_entries
+  - @blog_entries.each do |blog_entry|
+    -#.secondary-navigation
+    -#  %ul.wat-cf
+    -#    %li.first.active= link_to "#{t("web-app-theme.list", :default => "List")}", blog_entries_path
+    -#    %li= link_to "#{t("web-app-theme.new", :default => "New")}", new_blog_entry_path
+    .content    
+      .content_title
+        .post_title 
+          = link_to blog_entry.subject, blog_entry_path(blog_entry)        
+      .content_date
+        =  blog_entry.updated_at.strftime("%d %b %Y")
+      .content_body      
+        -#.post_upper
+        -#.post_middle
+        -#.post_date
+          -#= blog_entry.created_at
+        .post_content
+          = sanitize(blog_entry.content)
+        -#.post_lower
+.actions-bar.wat-cf                                       
+  .actions
+  = paginate @blog_entries
 - content_for :sidebar, render(:partial => 'sidebar')
